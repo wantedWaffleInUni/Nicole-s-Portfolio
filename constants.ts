@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
   tagline: "Bridging the gap between creative storytelling and data-driven financial strategy.",
   email: "nicolekhor0815@gmail.com",
   phone: "+60 12-489 5477",
-  linkedin: "https://linkedin.com/in/nicole-khor", 
+  linkedin: "https://www.linkedin.com/in/nicole-khor-5a9a4b267/", 
   location: "Malaysia",
 };
 
