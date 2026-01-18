@@ -4,6 +4,22 @@ import Placeholder from './Placeholder';
 import { SOCIAL_METRICS, SOCIAL_POSTS } from '../constants';
 
 const SocialMedia: React.FC = () => {
+  // Helper function to get social media post image paths
+  const getSocialPostImagePath = (postId: string, platform: string, type: string) => {
+    const platformLower = platform.toLowerCase();
+    if (postId === 'p1') {
+      // Instagram Reel - Financial Literacy Campaign
+      return `/images/social-media/${platformLower}/reel-financial-literacy-campaign.jpg`;
+    } else if (postId === 'p2') {
+      // Instagram Carousel - Event Highlights
+      return `/images/social-media/${platformLower}/carousel-event-highlights.jpg`;
+    } else if (postId === 'p3') {
+      // LinkedIn Post - Reflecting on Head of Publicity
+      return `/images/social-media/${platformLower}/post-reflecting-head-of-publicity.jpg`;
+    }
+    return '';
+  };
+
   return (
     <Section id="social" className="bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -27,7 +43,7 @@ const SocialMedia: React.FC = () => {
           </div>
         </div>
 
-        {/* Right: Content Grid Placeholders */}
+        {/* Right: Content Grid */}
         <div className="lg:col-span-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {SOCIAL_POSTS.map((post) => (
@@ -36,6 +52,8 @@ const SocialMedia: React.FC = () => {
                    <Placeholder 
                      label={`${post.platform} ${post.type}`} 
                      icon={post.type === 'Reel' ? 'video' : 'image'} 
+                     src={getSocialPostImagePath(post.id, post.platform, post.type)}
+                     alt={post.caption}
                    />
                 </div>
                 <h4 className="text-sm font-medium text-stone-900 group-hover:text-stone-600 transition-colors line-clamp-2">

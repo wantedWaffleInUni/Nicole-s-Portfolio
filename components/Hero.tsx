@@ -43,10 +43,15 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Portrait Placeholder */}
+        {/* Right Column: Portrait Image */}
         <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
           <div className="w-64 h-80 md:w-80 md:h-[30rem] lg:w-full lg:h-[36rem] relative">
-            <Placeholder label="Portrait Image" className="shadow-2xl shadow-stone-200" />
+            <Placeholder 
+              label="Portrait Image" 
+              className="shadow-2xl shadow-stone-200" 
+              src="/images/hero/portrait.jpg"
+              alt="Nicole Khor Jia Qi - Professional Portrait"
+            />
             
             {/* Decorative Element */}
             <div className="absolute -z-10 top-6 -right-6 w-full h-full border border-stone-200 hidden md:block"></div>

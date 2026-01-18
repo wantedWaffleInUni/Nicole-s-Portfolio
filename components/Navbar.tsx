@@ -56,7 +56,11 @@ const Navbar: React.FC = () => {
         </button>
 
         {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-stone-50 z-40 flex flex-col justify-center items-center space-y-8 transition-transform duration-500 ease-in-out ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+        <div className={`fixed inset-0 bg-stone-50 z-40 flex flex-col justify-center items-center space-y-8 transition-all duration-500 ease-in-out ${
+          mobileMenuOpen 
+            ? 'translate-y-0 opacity-100 pointer-events-auto' 
+            : '-translate-y-full opacity-0 pointer-events-none'
+        }`}>
            {navLinks.map((link) => (
             <a 
               key={link.name} 

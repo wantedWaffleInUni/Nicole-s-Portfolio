@@ -5,6 +5,18 @@ import { BLOG_POSTS } from '../constants';
 import { ArrowUpRight } from 'lucide-react';
 
 const Blog: React.FC = () => {
+  // Helper function to get blog post cover image path
+  const getBlogImagePath = (postId: string) => {
+    if (postId === '1') {
+      return '/images/blog/intersection-finance-storytelling.jpg';
+    } else if (postId === '2') {
+      return '/images/blog/navigating-ecommerce-market-entry.jpg';
+    } else if (postId === '3') {
+      return '/images/blog/building-brand-as-student.jpg';
+    }
+    return '';
+  };
+
   return (
     <Section id="insights" className="bg-white">
       <div className="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -24,7 +36,11 @@ const Blog: React.FC = () => {
             className="group cursor-pointer flex flex-col h-full"
           >
             <div className="overflow-hidden mb-6 aspect-[3/2]">
-              <Placeholder label="Article Cover Image" />
+              <Placeholder 
+                label="Article Cover Image" 
+                src={getBlogImagePath(post.id)}
+                alt={post.title}
+              />
             </div>
             
             <div className="flex-1 flex flex-col">

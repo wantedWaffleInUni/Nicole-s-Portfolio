@@ -6,14 +6,48 @@ interface PlaceholderProps {
   className?: string;
   height?: string;
   icon?: 'image' | 'video';
+  src?: string; // Image or video source path
+  alt?: string; // Alt text for images
 }
 
 const Placeholder: React.FC<PlaceholderProps> = ({ 
   label, 
   className = "", 
   height = "h-full", 
-  icon = 'image' 
+  icon = 'image',
+  src,
+  alt
 }) => {
+  // If source is provided, show the actual media
+  if (src) {
+    if (icon === 'video') {
+      return (
+        <div className={`w-full ${height} relative overflow-hidden ${className}`}>
+          <video 
+            src={src} 
+            className="w-full h-full object-cover"
+            controls
+            preload="metadata"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      );
+    } else {
+      return (
+        <div className={`w-full ${height} relative overflow-hidden ${className}`}>
+          <img 
+            src={src} 
+            alt={alt || label}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      );
+    }
+  }
+
+  // Fallback to placeholder UI if no source provided
   return (
     <div className={`w-full ${height} bg-stone-100 border border-stone-200 rounded-sm flex flex-col items-center justify-center p-6 transition-all duration-300 hover:bg-stone-200 group relative overflow-hidden ${className}`}>
       <div className="absolute inset-0 bg-stone-500/0 group-hover:bg-stone-500/5 transition-colors duration-300"></div>

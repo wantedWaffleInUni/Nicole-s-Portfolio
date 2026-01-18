@@ -9,6 +9,21 @@ import { ArrowRight, CheckCircle2, Layers } from 'lucide-react';
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  // Helper function to get project image paths
+  const getProjectImagePath = (projectId: string, type: 'cover' | 'video' | 'visual1' | 'visual2') => {
+    const projectFolder = projectId.replace(/-/g, '-');
+    if (type === 'cover') {
+      return `/images/projects/${projectFolder}/cover.jpg`;
+    } else if (type === 'video') {
+      return `/videos/projects/${projectFolder}/highlight-video.mp4`;
+    } else if (type === 'visual1') {
+      return `/images/projects/${projectFolder}/campaign-visual-1.jpg`;
+    } else if (type === 'visual2') {
+      return `/images/projects/${projectFolder}/campaign-visual-2.jpg`;
+    }
+    return '';
+  };
+
   return (
     <Section id="projects" fullWidth>
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 px-4 md:px-0">
@@ -27,9 +42,15 @@ const Projects: React.FC = () => {
             onClick={() => setSelectedProject(project)}
             className="group cursor-pointer relative bg-white border border-stone-100 hover:shadow-2xl hover:shadow-stone-200/50 transition-all duration-500 overflow-hidden"
           >
-            {/* Image Container with Placeholder */}
+            {/* Image Container */}
             <div className="relative h-64 md:h-80 overflow-hidden bg-stone-50">
-               <Placeholder label={`${project.title} Cover`} height="h-full" className="rounded-none border-0" />
+               <Placeholder 
+                 label={`${project.title} Cover`} 
+                 height="h-full" 
+                 className="rounded-none border-0" 
+                 src={getProjectImagePath(project.id, 'cover')}
+                 alt={`${project.title} - ${project.category}`}
+               />
               <div className="absolute top-4 left-4 bg-white/90 px-3 py-1 text-xs uppercase tracking-widest font-medium text-stone-800 z-10 shadow-sm">
                 {project.category}
               </div>
@@ -66,16 +87,29 @@ const Projects: React.FC = () => {
               <p className="text-lg text-stone-600 font-light leading-relaxed">{selectedProject.overview}</p>
             </div>
 
-            {/* Project Gallery Placeholder Section */}
+            {/* Project Gallery Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
                <div className="col-span-1 md:col-span-2 h-64">
-                  <Placeholder label="Project Highlight Video" icon="video" />
+                  <Placeholder 
+                    label="Project Highlight Video" 
+                    icon="video" 
+                    src={getProjectImagePath(selectedProject.id, 'video')}
+                    alt={`${selectedProject.title} - Highlight Video`}
+                  />
                </div>
                <div className="h-48">
-                  <Placeholder label="Campaign Visual 1" />
+                  <Placeholder 
+                    label="Campaign Visual 1" 
+                    src={getProjectImagePath(selectedProject.id, 'visual1')}
+                    alt={`${selectedProject.title} - Campaign Visual 1`}
+                  />
                </div>
                <div className="h-48">
-                  <Placeholder label="Campaign Visual 2" />
+                  <Placeholder 
+                    label="Campaign Visual 2" 
+                    src={getProjectImagePath(selectedProject.id, 'visual2')}
+                    alt={`${selectedProject.title} - Campaign Visual 2`}
+                  />
                </div>
             </div>
 

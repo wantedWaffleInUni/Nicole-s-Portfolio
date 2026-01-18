@@ -1,0 +1,17 @@
+@config "./tailwind.config.js";
+@import "tailwindcss";
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fafaf9; 
+}
+::-webkit-scrollbar-thumb {
+  background: #d6d3d1; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a29e; 
+}
