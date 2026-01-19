@@ -227,7 +227,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: "1",
     quote: "Nicole has an exceptional ability to translate complex financial data into compelling narratives. Her work on our rebrand was nothing short of transformative.",
-    author: "Sarah L.",
+    author: "Yanly C.",
     role: "President",
     company: "MUIG"
   },
